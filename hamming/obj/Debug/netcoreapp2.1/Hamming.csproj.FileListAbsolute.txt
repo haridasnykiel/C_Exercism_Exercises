@@ -1,0 +1,14 @@
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/Hamming.deps.json
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/Hamming.runtimeconfig.json
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/Hamming.runtimeconfig.dev.json
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/Hamming.dll
+/Users/Hari/Exercism/csharp/hamming/bin/Debug/netcoreapp2.1/Hamming.pdb
+/Users/Hari/Exercism/csharp/hamming/obj/Debug/netcoreapp2.1/Hamming.csprojAssemblyReference.cache
+/Users/Hari/Exercism/csharp/hamming/obj/Debug/netcoreapp2.1/Hamming.csproj.CoreCompileInputs.cache
+/Users/Hari/Exercism/csharp/hamming/obj/Debug/netcoreapp2.1/Hamming.AssemblyInfoInputs.cache
+/Users/Hari/Exercism/csharp/hamming/obj/Debug/netcoreapp2.1/Hamming.AssemblyInfo.cs
+/Users/Hari/Exercism/csharp/hamming/obj/Debug/netcoreapp2.1/Hamming.dll
+/Users/Hari/Exercism/csharp/hamming/obj/Debug/netcoreapp2.1/Hamming.pdb
