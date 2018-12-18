@@ -15,6 +15,10 @@ public struct RationalNumber {
     public RationalNumber (int numerator, int denominator) {
         _numerator = denominator < 0 ? -1 * numerator : numerator;
         _denominator = denominator < 0 ? Math.Abs (denominator) : denominator;
+        CalculateGCD();
+    }
+
+    private void CalculateGCD () {
         var gcd = Reduce (a: Math.Abs (_denominator), b: Math.Abs (_numerator));
         _numerator = _numerator / gcd;
         _denominator = _denominator / gcd;
@@ -64,9 +68,7 @@ public struct RationalNumber {
         );
     }
 
-    public static RationalNumber operator * (RationalNumber r1, RationalNumber r2) {
-        return r1.Mul (r2);
-    }
+    public static RationalNumber operator *(RationalNumber r1, RationalNumber r2) => r1.Mul(r2);
 
     public RationalNumber Div (RationalNumber r) {
         return new RationalNumber (
@@ -74,13 +76,11 @@ public struct RationalNumber {
             this._denominator * r._numerator);
     }
 
-    public static RationalNumber operator / (RationalNumber r1, RationalNumber r2) {
-        return r1.Div (r2);
-    }
+    public static RationalNumber operator /(RationalNumber r1, RationalNumber r2) => r1.Div(r2);
 
     public RationalNumber Abs () {
-        return new RationalNumber(
-            this._numerator < 0 ? this._numerator * -1 : this._numerator, 
+        return new RationalNumber (
+            this._numerator < 0 ? this._numerator * -1 : this._numerator,
             this._denominator < 0 ? this._denominator * -1 : this._denominator);
     }
 
@@ -89,7 +89,10 @@ public struct RationalNumber {
     }
 
     public RationalNumber Exprational (int power) {
-        throw new NotImplementedException ("You need to implement this function.");
+        return new RationalNumber(
+            Convert.ToInt32(Math.Pow(this._numerator, power)), 
+            Convert.ToInt32(Math.Pow(this._denominator, power))
+        );
     }
 
     public double Expreal (int baseNumber) {
