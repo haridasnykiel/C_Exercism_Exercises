@@ -3,42 +3,43 @@ using System.Diagnostics;
 
 public static class RealNumberExtension {
     public static double Expreal (this int realNumber, RationalNumber r) {
-        throw new NotImplementedException ("You need to implement this extension method.");
+        var quotient = (double) r._numerator / (double) r._denominator;
+        return Math.Pow (realNumber, quotient);
     }
 }
 
 public struct RationalNumber {
 
-    int _numerator;
-    int _denominator;
+    public int _numerator;
+    public int _denominator;
 
     public RationalNumber (int numerator, int denominator) {
         _numerator = denominator < 0 ? -1 * numerator : numerator;
         _denominator = denominator < 0 ? Math.Abs (denominator) : denominator;
-        CalculateGCD();
+        CalculateGCD ();
     }
 
     private void CalculateGCD () {
-        var gcd = Reduce (a: Math.Abs (_denominator), b: Math.Abs (_numerator));
+        var gcd = Reduce (denominator: Math.Abs (_denominator), numerator: Math.Abs (_numerator));
         _numerator = _numerator / gcd;
         _denominator = _denominator / gcd;
     }
 
-    private int Reduce (int a, int b) {
-        if (a > b) {
-            return GCD (a, b);
+    private int Reduce (int denominator, int numerator) {
+        if (denominator > numerator) {
+            return GCD (denominator, numerator);
         } else {
-            return GCD (b, a);
+            return GCD (numerator, denominator);
         }
     }
 
-    private int GCD (int a, int b) {
-        while (b != 0) {
-            var t = b;
-            b = a % b;
-            a = t;
+    private int GCD (int dividend, int divisor) {
+        while (divisor != 0) {
+            var temp = divisor;
+            divisor = dividend % divisor;
+            dividend = temp;
         }
-        return Math.Abs (a);
+        return Math.Abs (dividend);
     }
 
     public RationalNumber Add (RationalNumber r) {
@@ -47,9 +48,7 @@ public struct RationalNumber {
             _denominator = this._denominator * r._denominator);
     }
 
-    public static RationalNumber operator + (RationalNumber r1, RationalNumber r2) {
-        return r1.Add (r2);
-    }
+    public static RationalNumber operator +(RationalNumber r1, RationalNumber r2) => r1.Add(r2);
 
     public RationalNumber Sub (RationalNumber r) {
         return new RationalNumber (
@@ -57,9 +56,7 @@ public struct RationalNumber {
             this._denominator * r._denominator);
     }
 
-    public static RationalNumber operator - (RationalNumber r1, RationalNumber r2) {
-        return r1.Sub (r2);
-    }
+    public static RationalNumber operator -(RationalNumber r1, RationalNumber r2) => r1.Sub(r2);
 
     public RationalNumber Mul (RationalNumber r) {
         return new RationalNumber (
@@ -68,7 +65,7 @@ public struct RationalNumber {
         );
     }
 
-    public static RationalNumber operator *(RationalNumber r1, RationalNumber r2) => r1.Mul(r2);
+    public static RationalNumber operator * (RationalNumber r1, RationalNumber r2) => r1.Mul (r2);
 
     public RationalNumber Div (RationalNumber r) {
         return new RationalNumber (
@@ -76,7 +73,7 @@ public struct RationalNumber {
             this._denominator * r._numerator);
     }
 
-    public static RationalNumber operator /(RationalNumber r1, RationalNumber r2) => r1.Div(r2);
+    public static RationalNumber operator / (RationalNumber r1, RationalNumber r2) => r1.Div (r2);
 
     public RationalNumber Abs () {
         return new RationalNumber (
@@ -84,18 +81,12 @@ public struct RationalNumber {
             this._denominator < 0 ? this._denominator * -1 : this._denominator);
     }
 
-    public RationalNumber Reduce () {
-        throw new NotImplementedException ("You need to implement this function.");
-    }
+    public RationalNumber Reduce() => this;
 
     public RationalNumber Exprational (int power) {
-        return new RationalNumber(
-            Convert.ToInt32(Math.Pow(this._numerator, power)), 
-            Convert.ToInt32(Math.Pow(this._denominator, power))
+        return new RationalNumber (
+            Convert.ToInt32 (Math.Pow (this._numerator, power)),
+            Convert.ToInt32 (Math.Pow (this._denominator, power))
         );
-    }
-
-    public double Expreal (int baseNumber) {
-        throw new NotImplementedException ("You need to implement this function.");
     }
 }
