@@ -7,3 +7,6 @@ rational-numbers/.vscode
 grains/bin
 grains/obj
 grains/.vscode
+perfect-numbers/bin
+perfect-numbers/obj
+perfect-numbers/.vscode
