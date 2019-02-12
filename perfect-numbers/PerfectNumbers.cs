@@ -10,37 +10,19 @@ public enum Classification {
 
 public static class PerfectNumbers {
     public static Classification Classify (int number) {
-        // Note that this loop runs  
-        // till square root 
 
-        if(number <= 0) {
-            throw new ArgumentOutOfRangeException();
+        if (number <= 0) {
+            throw new ArgumentOutOfRangeException ();
         }
+        
+        int sum = 0;
 
-        var squareRootOfNumber = Math.Sqrt (number);// square root of number.
-        List<int> divisors = new List<int> ();
-
-        for (int i = 1; i <= squareRootOfNumber; i++) {
-            if (number % i == 0) {
-                if (number / i == i) {
-                    divisors.Add (i); 
-                }
-                else {
-                    divisors.Add (i);
-                    if ((number / i) != number)
-                        divisors.Add (number / i);
-                }
+        for (int i = 1; i <= number / 2; i++) {
+            if(number % i == 0) {
+                sum += i;
             }
         }
 
-        var sum = divisors.Sum ();
-
-        if (sum == number) {
-            return Classification.Perfect;
-        } else if (sum < number) {
-            return Classification.Deficient;
-        } else {
-            return Classification.Abundant;
-        }
+        return sum == number ? Classification.Perfect : sum < number ? Classification.Deficient : Classification.Abundant;
     }
 }
